@@ -9,6 +9,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: install deps
+        run: |
+          brew install just
+
       - name: build
         run: |
           just xcframework

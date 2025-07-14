@@ -1,0 +1,27 @@
+name: Build idevice
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  build-frameworks: 
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: build
+        run: |
+          just xcframework
+          just plist_xcframework
+
+      - name: Upload xcframework
+        uses: actions/upload-artifact@v4
+        with:
+          name: IDevice.xcframework
+          path: ffi/IDevice.xcframework
+
+      - name: Upload plist_xcframework
+        uses: actions/upload-artifact@v4
+        with:
+          name: plist.xcframework
+          path: swift/plist.xcframework

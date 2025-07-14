@@ -12,7 +12,7 @@ jobs:
       - name: install deps
         run: |
           brew install just
-          for target in x86_64-apple-ios aarch64-apple-ios x86_64-apple-ios-sim aarch64-apple-ios-sim; do
+          for target in x86_64-apple-darwin aarch64-apple-darwin aarch64-apple-ios x86_64-apple-ios-sim aarch64-apple-ios-sim; do
             rustup target add "$target"
           done
 
